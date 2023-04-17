@@ -1,7 +1,8 @@
 {
 	"info": {
 		"_postman_id": "512892aa-f17f-4b20-aa17-5fe72447c5c6",
-		"name": "Tezi Unofficial HTTP Rest API",
+		"name": "Unofficial Toradex Easy Installer HTTP Rest API Documentation",
+		"description": "**THIS IS NOT OFFICIAL!**\n\n**THIS IS NOT MAINTAINED!**\n\n**THIS IS NOT STABLE!**\n\n**THIS IS NOT GUARANTEED TO WORK IN THE FUTURE!**\n\n**USE AT YOUR OWN RISK!**\n\nFor the examples below, 192.168.11.1 is Toradex module's IP that is running Toradex Easy Installer. And the port 8080 is the default port at which Toradex Easy Installer exposes its HTTP Rest API server.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19931341"
 	},
@@ -113,7 +114,8 @@
 					"path": [
 						"images"
 					]
-				}
+				},
+				"description": "The index below respects the image index from the image list that we get from the **List Available Tezi Images**.\n\nTherefore, according to the image list above, the index 1 from the request below would install Toradex Easy Installer release date 2023-02-22 version 5.7.2+build.14."
 			},
 			"response": []
 		}
