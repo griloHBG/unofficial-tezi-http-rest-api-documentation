@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "512892aa-f17f-4b20-aa17-5fe72447c5c6",
+		"name": "Tezi Unofficial HTTP Rest API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19931341"
+	},
+	"item": [
+		{
+			"name": "Get Tezi Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{TEZI_IP}}:{{TEZI_PORT}}/status",
+					"host": [
+						"{{TEZI_IP}}"
+					],
+					"port": "{{TEZI_PORT}}",
+					"path": [
+						"status"
+					]
+				},
+				"description": "Status can be:\n\n- idle\n- scanning\n- installing\n- installed\n- aborted\n- failed\n- unkown\n    \n\nReturn format is JSON:\n\n```\n{\n    \"status\": \"idle\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "List Tezi Feeds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{TEZI_IP}}:{{TEZI_PORT}}/feeds",
+					"host": [
+						"{{TEZI_IP}}"
+					],
+					"port": "{{TEZI_PORT}}",
+					"path": [
+						"feeds"
+					]
+				},
+				"description": "Return format is JSON:\n\n```\n[\n    {\n        \"enabled\": \"1\",\n        \"label\": \"Toradex Image Server\",\n        \"url\": \"http://tezi.toradex.com/image_list.json?PID8=00371102\"\n    },\n    {\n        \"enabled\": \"1\",\n        \"label\": \"Toradex 3rd Party Image Server\",\n        \"url\": \"http://tezi.toradex.com/image_list_3rdparty.json?PID8=00371102\"\n    },\n    {\n        \"enabled\": \"0\",\n        \"label\": \"Toradex Continuous Integration Server (testing)\",\n        \"url\": \"http://tezi.toradex.com/image_list_ci.json?PID8=00371102\"\n    }\n]\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "List Available Tezi images",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{TEZI_IP}}:{{TEZI_PORT}}/images",
+					"host": [
+						"{{TEZI_IP}}"
+					],
+					"port": "{{TEZI_PORT}}",
+					"path": [
+						"images"
+					]
+				},
+				"description": "Return format is JSON:\n\n  \n\n```\n[\n    {\n        \"name\": \"TorizonCore with evaluation containers\",\n        \"release_date\": \"2023-03-29\",\n        \"uri\": \"http://tezi.toradex.com/artifactory/torizoncore-oe-prod-frankfurt/dunfell-5.x.y/release/20/apalis-imx8/torizon/torizon-core-docker-evaluation/teziimage/\",\n        \"version\": \"5.7.2+build.20.modified.container\"\n    },\n    {\n        \"name\": \"Toradex Easy Installer\",\n        \"release_date\": \"2023-02-22\",\n        \"uri\": \"http://tezi.toradex.com/artifactory/tezi-oe-prod-frankfurt/dunfell-5.x.y/release/14/apalis-imx8/tezi/tezi-run/teziimage/\",\n        \"version\": \"5.7.2+build.14\"\n    },\n...\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Tezi Feed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"feed_url\":\"http://xablau.local\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{TEZI_IP}}:{{TEZI_PORT}}/feeds",
+					"host": [
+						"{{TEZI_IP}}"
+					],
+					"port": "{{TEZI_PORT}}",
+					"path": [
+						"feeds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trigger Tezi Image Installation (Flashing)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accept_all_licenses\":\"false\",\n    \"image_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{TEZI_IP}}:{{TEZI_PORT}}/images",
+					"host": [
+						"{{TEZI_IP}}"
+					],
+					"port": "{{TEZI_PORT}}",
+					"path": [
+						"images"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TEZI_IP",
+			"value": "192.168.11.1",
+			"type": "string"
+		},
+		{
+			"key": "TEZI_PORT",
+			"value": "8080",
+			"type": "string"
+		}
+	]
+}
